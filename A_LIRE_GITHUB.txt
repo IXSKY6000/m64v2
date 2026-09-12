@@ -1,0 +1,37 @@
+FICHIERS A AJOUTER A TON DEPOT ACTUEL
+
+Ton depot contient deja :
+actors/mario/
+assets/anims/
+include/
+levels/
+src/
+LICENSE.md
+
+C'est parfait. NE DEPLACE RIEN.
+
+Ajoute simplement le contenu de ce ZIP a la racine du depot.
+Apres l'ajout, tu dois aussi avoir :
+
+CMakeLists.txt
+main.c
+port/
+generated/
+assets-fx/
+build-g1a.yml
+
+Pour GitHub Actions, cree manuellement ce fichier :
+.github/workflows/build-g1a.yml
+
+Puis colle dedans le contenu du fichier visible :
+build-g1a.yml
+
+Ensuite :
+Actions > Compiler SM64 Source G1A > Run workflow
+
+Le resultat attendu est :
+SM64SRC.g1a
+
+Le nouveau CMakeLists.txt detecte automatiquement :
+- soit src/game/mario.c directement a la racine (ton cas)
+- soit original/src/game/mario.c
