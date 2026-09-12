@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(SM64Source35E VERSION 7.0 LANGUAGES C)
+project(SM64Source35E VERSION 8.0 LANGUAGES C)
 
 include(GenerateG1A)
 find_package(Gint 2.9 REQUIRED)
@@ -24,6 +24,7 @@ add_executable(sm64src
     port/compat.c
     port/sandbox_stubs.c
     port/renderer.c
+    port/platform_graph35.c
     generated/animation_data.c
 
     ${SM64_ROOT}/src/game/mario.c

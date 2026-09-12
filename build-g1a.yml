@@ -20,6 +20,7 @@ jobs:
           test -f CMakeLists.txt
           test -f main.c
           test -f port/renderer.c
+          test -f port/platform_graph35.c
           test -f generated/animation_data.c
           test -f src/game/mario.c || test -f original/src/game/mario.c
 

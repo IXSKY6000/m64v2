@@ -1,7 +1,3 @@
-#include <gint/display.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <stdio.h>
 #include "sm64.h"
 #include "types.h"
 #include "game/area.h"
@@ -10,6 +6,7 @@
 #include "game/mario.h"
 #include "engine/math_util.h"
 #include "mario_mesh.h"
+#include "platform_graph35.h"
 
 static int anim_index(s32 frame,const u16 **attr){int r;if(frame<(*attr)[0])r=(*attr)[1]+frame;else r=(*attr)[1]+(*attr)[0]-1;*attr+=2;return r;}
 typedef enum {AT_TRANSLATION,AT_LATERAL,AT_VERTICAL,AT_NONE,AT_ROTATION} AnimType;
@@ -23,8 +20,8 @@ static const Part parts[20]={
 
 static Mat4 sView;
 static void point_xform(const Mat4 m,f32 x,f32 y,f32 z,Vec3f o){o[0]=x*m[0][0]+y*m[1][0]+z*m[2][0]+m[3][0];o[1]=x*m[0][1]+y*m[1][1]+z*m[2][1]+m[3][1];o[2]=x*m[0][2]+y*m[1][2]+z*m[2][2]+m[3][2];}
-static bool project(Vec3f p,int *x,int *y){Vec3f c;point_xform(sView,p[0],p[1],p[2],c);f32 d=-c[2];if(d<20.0f)return false;*x=64+(int)(c[0]*77.0f/d);*y=32-(int)(c[1]*77.0f/d);return *x>-100&&*x<228&&*y>-100&&*y<164;}
-static void world_line(Vec3f a,Vec3f b){int ax,ay,bx,by;if(project(a,&ax,&ay)&&project(b,&bx,&by))dline(ax,ay,bx,by,C_BLACK);}
+static s32 project(Vec3f p,int *x,int *y){Vec3f c;point_xform(sView,p[0],p[1],p[2],c);f32 d=-c[2];if(d<20.0f)return FALSE;*x=64+(int)(c[0]*77.0f/d);*y=32-(int)(c[1]*77.0f/d);return (*x>-100&&*x<228&&*y>-100&&*y<164);}
+static void world_line(Vec3f a,Vec3f b){int ax,ay,bx,by;if(project(a,&ax,&ay)&&project(b,&bx,&by))graph_line_black(ax,ay,bx,by);}
 
 static void extra_torso_rotation(Mat4 dst,Mat4 butt){Vec3s r={0,0,0};struct MarioBodyState *b=gMarioState->marioBodyState;s32 act=b->action;if(act!=ACT_BUTT_SLIDE&&act!=ACT_HOLD_BUTT_SLIDE&&act!=ACT_WALKING&&act!=ACT_RIDING_SHELL_GROUND){b->torsoAngle[0]=b->torsoAngle[1]=b->torsoAngle[2]=0;}r[0]=b->torsoAngle[1];r[1]=b->torsoAngle[2];r[2]=b->torsoAngle[0];Vec3f t={0,0,0};Mat4 q;mtxf_rotate_xyz_and_translate(q,t,r);mtxf_mul(dst,q,butt);}
 static void extra_head_rotation(Mat4 dst,Mat4 head){Vec3s r={0,0,0};struct MarioBodyState *b=gMarioState->marioBodyState;if(gCurrentArea->camera->mode==CAMERA_MODE_C_UP){r[0]=gPlayerCameraState->headRotation[1];r[2]=gPlayerCameraState->headRotation[0];}else if(b->action&ACT_FLAG_WATER_OR_TEXT){r[0]=b->headAngle[1];r[1]=b->headAngle[2];r[2]=b->headAngle[0];}Vec3f t={0,0,0};Mat4 q;mtxf_rotate_xyz_and_translate(q,t,r);mtxf_mul(dst,q,head);}
@@ -37,4 +34,13 @@ static void build_pose(Mat4 out[20],Mat4 *headDraw){struct AnimInfo *ai=&gMarioS
 
 static void draw_model(void){Mat4 pose[20],head;build_pose(pose,&head);for(int i=0;i<20;i++){if(!parts[i].edges)continue;const Mat4 *m=(i==3)?&head:&pose[i];for(int j=0;j<parts[i].n;j++){const Sm64Edge*e=&parts[i].edges[j];Vec3f a,b;point_xform(*m,e->ax,e->ay,e->az,a);point_xform(*m,e->bx,e->by,e->bz,b);world_line(a,b);}}}
 static void draw_floor(void){int gx=((int)gMarioState->pos[0]/256)*256,gz=((int)gMarioState->pos[2]/256)*256;for(int i=-6;i<=6;i++){Vec3f a={(f32)(gx+i*256),0,(f32)(gz-6*256)},b={(f32)(gx+i*256),0,(f32)(gz+6*256)},c={(f32)(gx-6*256),0,(f32)(gz+i*256)},d={(f32)(gx+6*256),0,(f32)(gz+i*256)};world_line(a,b);world_line(c,d);}}
-void graph_renderer_draw(void){mtxf_lookat(sView,gLakituState.pos,gLakituState.focus,gLakituState.roll);dclear(C_WHITE);draw_floor();draw_model();char b[30];snprintf(b,sizeof(b),"%08lx A%02x F%d",(unsigned long)gMarioState->action,(unsigned)gMarioState->marioObj->header.gfx.animInfo.animID,gMarioState->marioObj->header.gfx.animInfo.animFrame);drect(0,0,127,7,C_WHITE);dtext(0,0,C_BLACK,b);dupdate();}
+static char hex_digit(unsigned int v){return (char)(v<10?'0'+v:'A'+v-10);}
+static char *put_hex8(char *p,u32 v){for(int i=7;i>=0;i--)*p++=hex_digit((v>>(i*4))&15);return p;}
+static char *put_hex2(char *p,unsigned int v){*p++=hex_digit((v>>4)&15);*p++=hex_digit(v&15);return p;}
+static char *put_dec(char *p,s32 v){char t[12];int n=0;if(v<0){*p++='-';v=-v;}do{t[n++]=(char)('0'+v%10);v/=10;}while(v&&n<11);while(n)*p++=t[--n];return p;}
+void graph_renderer_draw(void){
+ mtxf_lookat(sView,gLakituState.pos,gLakituState.focus,gLakituState.roll);
+ graph_clear_white();draw_floor();draw_model();
+ char b[30];char *p=b;p=put_hex8(p,gMarioState->action);*p++=' ';*p++='A';p=put_hex2(p,(unsigned)gMarioState->marioObj->header.gfx.animInfo.animID);*p++=' ';*p++='F';p=put_dec(p,gMarioState->marioObj->header.gfx.animInfo.animFrame);*p=0;
+ graph_rect_white(0,0,127,7);graph_text_black(0,0,b);graph_present();
+}

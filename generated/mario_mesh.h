@@ -1,7 +1,6 @@
 #ifndef MARIO_MESH_H
 #define MARIO_MESH_H
-#include <stdint.h>
-typedef struct { int16_t ax,ay,az,bx,by,bz; } Sm64Edge;
+typedef struct { s16 ax,ay,az,bx,by,bz; } Sm64Edge;
 static const Sm64Edge mesh_butt[] = {
     {-37,-37,0,-35,55,0},
     {-37,-37,0,-7,-86,-85},

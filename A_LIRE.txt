@@ -1,0 +1,10 @@
+PATCH V8 - ERREUR u32 / ssize_t
+
+Remplace/ajoute ces fichiers a la racine de ton depot.
+Les sources SM64 dans original/ ou directement a la racine ne bougent pas.
+
+IMPORTANT pour GitHub Actions :
+cree .github/workflows/build-g1a.yml puis colle le contenu du build-g1a.yml fourni.
+
+La correction separe completement gint et les headers SM64.
+Aucun fichier source original SM64 n est modifie.
