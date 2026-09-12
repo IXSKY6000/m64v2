@@ -1,12 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
-project(SM64Source35E VERSION 8.0 LANGUAGES C)
+project(SM64Source35E VERSION 9.0 LANGUAGES C)
 
 include(GenerateG1A)
 find_package(Gint 2.9 REQUIRED)
 
-# Accepte les deux organisations :
-#   1) sources SM64 directement à la racine (src/, include/, actors/...)
-#   2) sources SM64 dans original/
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/game/mario.c")
     set(SM64_ROOT "${CMAKE_CURRENT_SOURCE_DIR}")
     message(STATUS "SM64 sources trouvees a la racine")
@@ -14,9 +11,7 @@ elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/original/src/game/mario.c")
     set(SM64_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/original")
     message(STATUS "SM64 sources trouvees dans original/")
 else()
-    message(FATAL_ERROR
-        "Sources SM64 introuvables. Il faut src/game/mario.c "
-        "a la racine ou original/src/game/mario.c.")
+    message(FATAL_ERROR "Sources SM64 introuvables")
 endif()
 
 add_executable(sm64src
@@ -25,6 +20,7 @@ add_executable(sm64src
     port/sandbox_stubs.c
     port/renderer.c
     port/platform_graph35.c
+    port/math_util_graph35.c
     generated/animation_data.c
 
     ${SM64_ROOT}/src/game/mario.c
@@ -37,20 +33,19 @@ add_executable(sm64src
     ${SM64_ROOT}/src/game/mario_actions_automatic.c
     ${SM64_ROOT}/src/game/mario_step.c
     ${SM64_ROOT}/src/game/camera.c
-    ${SM64_ROOT}/src/engine/math_util.c
     ${SM64_ROOT}/src/engine/graph_node.c
 )
 
 target_include_directories(sm64src PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/port
     ${CMAKE_CURRENT_SOURCE_DIR}/generated
     ${SM64_ROOT}
     ${SM64_ROOT}/include
     ${SM64_ROOT}/src
+    ${SM64_ROOT}/src/engine
 )
 
-# L'environnement original fournit normalement M_PI.
-# On le definit ici pour laisser math_util.c intact.
 target_compile_definitions(sm64src PRIVATE
     _LANGUAGE_C
     NON_MATCHING
@@ -63,6 +58,7 @@ target_compile_options(sm64src PRIVATE
     -Os
     -ffunction-sections
     -fdata-sections
+    -fomit-frame-pointer
     -Wno-unused-parameter
     -Wno-implicit-fallthrough
 )

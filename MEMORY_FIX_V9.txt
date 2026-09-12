@@ -1,0 +1,7 @@
+V9 MEMORY FIX
+
+Animations embarquees : 59/209
+IDs : 01 03 04 0F 10 11 12 13 14 2C 2E 3A 3C 3D 48 4B 4C 4D 4E 4F 50 53 56 57 5A 66 67 68 69 6A 6F 71 72 81 82 83 84 85 86 87 88 8C 8F 96 97 98 99 9A 9B BC BD BF C0 C1 C3 C4 C5 C8 C9
+
+Les données d'animation elles-mêmes viennent du fichier généré à partir des animations SM64 d'origine.
+Les tables sinus/arctan gardent leurs valeurs originales ; seul leur stockage devient const/ROM.
