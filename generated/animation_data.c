@@ -4447,355 +4447,355 @@ static const s16 anim_C9_values[] = {
 };
 
 /* 0x01: anim_01_02.inc.c */
-static const struct Animation anim_01_static = {
+static const struct Animation anim_01_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 80, 20,
     anim_01_02_values, anim_01_02_indices, 0
 };
 
 /* 0x03: anim_03.inc.c */
-static const struct Animation anim_03_static = {
+static const struct Animation anim_03_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 64, 20,
     anim_03_values, anim_03_indices, 0
 };
 
 /* 0x04: anim_04.inc.c */
-static const struct Animation anim_04_static = {
+static const struct Animation anim_04_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 33, 20,
     anim_04_values, anim_04_indices, 0
 };
 
 /* 0x0F: anim_0F_10.inc.c */
-static const struct Animation anim_0F_static = {
+static const struct Animation anim_0F_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 1, 20,
     anim_0F_10_values, anim_0F_10_indices, 0
 };
 
 /* 0x10: anim_0F_10.inc.c */
-static const struct Animation anim_10_static = {
+static const struct Animation anim_10_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 1, 0, 18, 20,
     anim_0F_10_values, anim_0F_10_indices, 0
 };
 
 /* 0x11: anim_11.inc.c */
-static const struct Animation anim_11_static = {
+static const struct Animation anim_11_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 16, 20,
     anim_11_values, anim_11_indices, 0
 };
 
 /* 0x12: anim_12.inc.c */
-static const struct Animation anim_12_static = {
+static const struct Animation anim_12_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 18, 20,
     anim_12_values, anim_12_indices, 0
 };
 
 /* 0x13: anim_13.inc.c */
-static const struct Animation anim_13_static = {
+static const struct Animation anim_13_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 23, 20,
     anim_13_values, anim_13_indices, 0
 };
 
 /* 0x14: anim_14.inc.c */
-static const struct Animation anim_14_static = {
+static const struct Animation anim_14_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 15, 20,
     anim_14_values, anim_14_indices, 0
 };
 
 /* 0x2C: anim_2C_2D.inc.c */
-static const struct Animation anim_2C_static = {
+static const struct Animation anim_2C_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 80, 20,
     anim_2C_2D_values, anim_2C_2D_indices, 0
 };
 
 /* 0x2E: anim_2E.inc.c */
-static const struct Animation anim_2E_static = {
+static const struct Animation anim_2E_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 47, 20,
     anim_2E_values, anim_2E_indices, 0
 };
 
 /* 0x3A: anim_3A.inc.c */
-static const struct Animation anim_3A_static = {
+static const struct Animation anim_3A_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 6, 20,
     anim_3A_values, anim_3A_indices, 0
 };
 
 /* 0x3C: anim_3C_3D.inc.c */
-static const struct Animation anim_3C_static = {
+static const struct Animation anim_3C_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 11, 20,
     anim_3C_3D_values, anim_3C_3D_indices, 0
 };
 
 /* 0x3D: anim_3C_3D.inc.c */
-static const struct Animation anim_3D_static = {
+static const struct Animation anim_3D_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 10, 0, 11, 20,
     anim_3C_3D_values, anim_3C_3D_indices, 0
 };
 
 /* 0x48: anim_48.inc.c */
-static const struct Animation anim_48_static = {
+static const struct Animation anim_48_static __attribute__((section(".rodata.sm64anim"))) = {
     0, 189, 0, 0, 77, 20,
     anim_48_values, anim_48_indices, 0
 };
 
 /* 0x4B: anim_4B.inc.c */
-static const struct Animation anim_4B_static = {
+static const struct Animation anim_4B_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 18, 20,
     anim_4B_values, anim_4B_indices, 0
 };
 
 /* 0x4C: anim_4C.inc.c */
-static const struct Animation anim_4C_static = {
+static const struct Animation anim_4C_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 9, 20,
     anim_4C_values, anim_4C_indices, 0
 };
 
 /* 0x4D: anim_4D_4E.inc.c */
-static const struct Animation anim_4D_static = {
+static const struct Animation anim_4D_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 12, 20,
     anim_4D_4E_values, anim_4D_4E_indices, 0
 };
 
 /* 0x4E: anim_4D_4E.inc.c */
-static const struct Animation anim_4E_static = {
+static const struct Animation anim_4E_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 22, 0, 38, 20,
     anim_4D_4E_values, anim_4D_4E_indices, 0
 };
 
 /* 0x4F: anim_4F.inc.c */
-static const struct Animation anim_4F_static = {
+static const struct Animation anim_4F_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 21, 20,
     anim_4F_values, anim_4F_indices, 0
 };
 
 /* 0x50: anim_50.inc.c */
-static const struct Animation anim_50_static = {
+static const struct Animation anim_50_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 6, 20,
     anim_50_values, anim_50_indices, 0
 };
 
 /* 0x53: anim_53.inc.c */
-static const struct Animation anim_53_static = {
+static const struct Animation anim_53_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 25, 20,
     anim_53_values, anim_53_indices, 0
 };
 
 /* 0x56: anim_56_57.inc.c */
-static const struct Animation anim_56_static = {
+static const struct Animation anim_56_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 1, 20,
     anim_56_57_values, anim_56_57_indices, 0
 };
 
 /* 0x57: anim_56_57.inc.c */
-static const struct Animation anim_57_static = {
+static const struct Animation anim_57_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 9, 0, 24, 20,
     anim_56_57_values, anim_56_57_indices, 0
 };
 
 /* 0x5A: anim_5A.inc.c */
-static const struct Animation anim_5A_static = {
+static const struct Animation anim_5A_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 38, 20,
     anim_5A_values, anim_5A_indices, 0
 };
 
 /* 0x66: anim_66.inc.c */
-static const struct Animation anim_66_static = {
+static const struct Animation anim_66_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 26, 20,
     anim_66_values, anim_66_indices, 0
 };
 
 /* 0x67: anim_67.inc.c */
-static const struct Animation anim_67_static = {
+static const struct Animation anim_67_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 5, 20,
     anim_67_values, anim_67_indices, 0
 };
 
 /* 0x68: anim_68.inc.c */
-static const struct Animation anim_68_static = {
+static const struct Animation anim_68_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 4, 20,
     anim_68_values, anim_68_indices, 0
 };
 
 /* 0x69: anim_69.inc.c */
-static const struct Animation anim_69_static = {
+static const struct Animation anim_69_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 10, 20,
     anim_69_values, anim_69_indices, 0
 };
 
 /* 0x6A: anim_6A.inc.c */
-static const struct Animation anim_6A_static = {
+static const struct Animation anim_6A_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 13, 20,
     anim_6A_values, anim_6A_indices, 0
 };
 
 /* 0x6F: anim_6F_70.inc.c */
-static const struct Animation anim_6F_static = {
+static const struct Animation anim_6F_static __attribute__((section(".rodata.sm64anim"))) = {
     0, 189, 0, 0, 10, 20,
     anim_6F_70_values, anim_6F_70_indices, 0
 };
 
 /* 0x71: anim_71.inc.c */
-static const struct Animation anim_71_static = {
+static const struct Animation anim_71_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 24, 20,
     anim_71_values, anim_71_indices, 0
 };
 
 /* 0x72: anim_72_73.inc.c */
-static const struct Animation anim_72_static = {
+static const struct Animation anim_72_static __attribute__((section(".rodata.sm64anim"))) = {
     0, 189, 0, 0, 72, 20,
     anim_72_73_values, anim_72_73_indices, 0
 };
 
 /* 0x81: anim_81.inc.c */
-static const struct Animation anim_81_static = {
+static const struct Animation anim_81_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 50, 20,
     anim_81_values, anim_81_indices, 0
 };
 
 /* 0x82: anim_82.inc.c */
-static const struct Animation anim_82_static = {
+static const struct Animation anim_82_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 67, 20,
     anim_82_values, anim_82_indices, 0
 };
 
 /* 0x83: anim_83.inc.c */
-static const struct Animation anim_83_static = {
+static const struct Animation anim_83_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 59, 20,
     anim_83_values, anim_83_indices, 0
 };
 
 /* 0x84: anim_84.inc.c */
-static const struct Animation anim_84_static = {
+static const struct Animation anim_84_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 64, 20,
     anim_84_values, anim_84_indices, 0
 };
 
 /* 0x85: anim_85.inc.c */
-static const struct Animation anim_85_static = {
+static const struct Animation anim_85_static __attribute__((section(".rodata.sm64anim"))) = {
     0, 189, 0, 0, 40, 20,
     anim_85_values, anim_85_indices, 0
 };
 
 /* 0x86: anim_86.inc.c */
-static const struct Animation anim_86_static = {
+static const struct Animation anim_86_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 40, 20,
     anim_86_values, anim_86_indices, 0
 };
 
 /* 0x87: anim_87.inc.c */
-static const struct Animation anim_87_static = {
+static const struct Animation anim_87_static __attribute__((section(".rodata.sm64anim"))) = {
     0, 189, 0, 0, 50, 20,
     anim_87_values, anim_87_indices, 0
 };
 
 /* 0x88: anim_88_89.inc.c */
-static const struct Animation anim_88_static = {
+static const struct Animation anim_88_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 20, 20,
     anim_88_89_values, anim_88_89_indices, 0
 };
 
 /* 0x8C: anim_8C.inc.c */
-static const struct Animation anim_8C_static = {
+static const struct Animation anim_8C_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 8, 20,
     anim_8C_values, anim_8C_indices, 0
 };
 
 /* 0x8F: anim_8E_8F.inc.c */
-static const struct Animation anim_8F_static = {
+static const struct Animation anim_8F_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 1, 0, 20, 20,
     anim_8E_8F_values, anim_8E_8F_indices, 0
 };
 
 /* 0x96: anim_96.inc.c */
-static const struct Animation anim_96_static = {
+static const struct Animation anim_96_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 10, 20,
     anim_96_values, anim_96_indices, 0
 };
 
 /* 0x97: anim_97.inc.c */
-static const struct Animation anim_97_static = {
+static const struct Animation anim_97_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 6, 20,
     anim_97_values, anim_97_indices, 0
 };
 
 /* 0x98: anim_98.inc.c */
-static const struct Animation anim_98_static = {
+static const struct Animation anim_98_static __attribute__((section(".rodata.sm64anim"))) = {
     0, 189, 0, 0, 90, 20,
     anim_98_values, anim_98_indices, 0
 };
 
 /* 0x99: anim_99.inc.c */
-static const struct Animation anim_99_static = {
+static const struct Animation anim_99_static __attribute__((section(".rodata.sm64anim"))) = {
     0, 189, 0, 0, 92, 20,
     anim_99_values, anim_99_indices, 0
 };
 
 /* 0x9A: anim_9A.inc.c */
-static const struct Animation anim_9A_static = {
+static const struct Animation anim_9A_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 8, 20,
     anim_9A_values, anim_9A_indices, 0
 };
 
 /* 0x9B: anim_9B.inc.c */
-static const struct Animation anim_9B_static = {
+static const struct Animation anim_9B_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 8, 20,
     anim_9B_values, anim_9B_indices, 0
 };
 
 /* 0xBC: anim_BC_BD.inc.c */
-static const struct Animation anim_BC_static = {
+static const struct Animation anim_BC_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 1, 20,
     anim_BC_BD_values, anim_BC_BD_indices, 0
 };
 
 /* 0xBD: anim_BC_BD.inc.c */
-static const struct Animation anim_BD_static = {
+static const struct Animation anim_BD_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 1, 0, 18, 20,
     anim_BC_BD_values, anim_BC_BD_indices, 0
 };
 
 /* 0xBF: anim_BF.inc.c */
-static const struct Animation anim_BF_static = {
+static const struct Animation anim_BF_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 24, 20,
     anim_BF_values, anim_BF_indices, 0
 };
 
 /* 0xC0: anim_C0.inc.c */
-static const struct Animation anim_C0_static = {
+static const struct Animation anim_C0_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 32, 20,
     anim_C0_values, anim_C0_indices, 0
 };
 
 /* 0xC1: anim_C1.inc.c */
-static const struct Animation anim_C1_static = {
+static const struct Animation anim_C1_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 36, 20,
     anim_C1_values, anim_C1_indices, 0
 };
 
 /* 0xC3: anim_C3.inc.c */
-static const struct Animation anim_C3_static = {
+static const struct Animation anim_C3_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 30, 20,
     anim_C3_values, anim_C3_indices, 0
 };
 
 /* 0xC4: anim_C4.inc.c */
-static const struct Animation anim_C4_static = {
+static const struct Animation anim_C4_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 30, 20,
     anim_C4_values, anim_C4_indices, 0
 };
 
 /* 0xC5: anim_C5.inc.c */
-static const struct Animation anim_C5_static = {
+static const struct Animation anim_C5_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 30, 20,
     anim_C5_values, anim_C5_indices, 0
 };
 
 /* 0xC8: anim_C8.inc.c */
-static const struct Animation anim_C8_static = {
+static const struct Animation anim_C8_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 6, 0, 20, 20,
     anim_C8_values, anim_C8_indices, 0
 };
 
 /* 0xC9: anim_C9.inc.c */
-static const struct Animation anim_C9_static = {
+static const struct Animation anim_C9_static __attribute__((section(".rodata.sm64anim"))) = {
     1, 189, 0, 0, 21, 20,
     anim_C9_values, anim_C9_indices, 0
 };

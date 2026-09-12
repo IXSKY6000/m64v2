@@ -1,0 +1,17 @@
+RAM FIX V10
+
+V9 compiled every C file successfully but overflowed Graph RAM by 7712 bytes.
+
+V10 is storage-only optimisation:
+- upstream original/src/game/camera.c stays untouched;
+- port/camera_graph35.c has the same camera logic/table values, with read-only
+  initialized tables qualified const and forced into .rodata.sm64cam;
+- the 59 static SM64 Animation descriptors are forced into .rodata.sm64anim;
+- the renderer body-part pointer table is forced into .rodata.sm64render.
+
+These sections are named .rodata.* so fxSDK's linker places them in ROM.
+No Mario physics formula, action transition, animation samples, camera table
+value or model edge has been changed by this fix.
+
+The workflow also generates SM64SRC.map so a future linker failure is easier
+to diagnose.

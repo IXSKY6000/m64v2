@@ -35,3 +35,11 @@ jobs:
           name: SM64SRC-g1a
           path: SM64SRC.g1a
           if-no-files-found: error
+
+      - name: Donner la map memoire
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SM64-link-map
+          path: build-fx/SM64SRC.map
+          if-no-files-found: ignore

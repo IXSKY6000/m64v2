@@ -11,7 +11,7 @@
 static int anim_index(s32 frame,const u16 **attr){int r;if(frame<(*attr)[0])r=(*attr)[1]+frame;else r=(*attr)[1]+(*attr)[0]-1;*attr+=2;return r;}
 typedef enum {AT_TRANSLATION,AT_LATERAL,AT_VERTICAL,AT_NONE,AT_ROTATION} AnimType;
 typedef struct {int parent;s16 tx,ty,tz;const Sm64Edge *edges;int n;} Part;
-static const Part parts[20]={
+static const Part parts[20] __attribute__((section(".rodata.sm64render")))={
 {-1,0,0,0,NULL,0},{0,0,0,0,mesh_butt,MESH_BUTT_COUNT},{1,68,0,0,mesh_torso,MESH_TORSO_COUNT},{2,87,0,0,mesh_head,MESH_HEAD_COUNT},
 {2,67,-10,79,NULL,0},{4,0,0,0,mesh_l_arm,MESH_L_ARM_COUNT},{5,65,0,0,mesh_l_forearm,MESH_L_FOREARM_COUNT},{6,60,0,0,mesh_l_hand,MESH_L_HAND_COUNT},
 {2,68,-10,-79,NULL,0},{8,0,0,0,mesh_r_arm,MESH_R_ARM_COUNT},{9,65,0,0,mesh_r_forearm,MESH_R_FOREARM_COUNT},{10,60,0,0,mesh_r_hand,MESH_R_HAND_COUNT},

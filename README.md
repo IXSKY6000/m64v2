@@ -1,3 +1,5 @@
+# SM64 Source Graph 35+E II - V10 RAM fix
+
 # SM64 Source 35E v9 — memory fix
 
 Cette version corrige les dépassements du linker Graph 35+E II observés en v8 :
@@ -16,3 +18,7 @@ Le rendu 128x64, le clavier et la plateforme plate restent la couche spécifique
 
 ## Compilation
 Crée `.github/workflows/build-g1a.yml`, colle le contenu du `build-g1a.yml` visible, puis lance `Compiler SM64 Source G1A` dans Actions.
+
+
+## V10
+V9 overflowed RAM by only 7712 bytes. V10 moves the read-only initialized camera tables from RAM to ROM without changing their values or camera formulas. The original `original/src/game/camera.c` is kept untouched; the Graph build uses `port/camera_graph35.c`.

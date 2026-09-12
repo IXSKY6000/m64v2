@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(SM64Source35E VERSION 9.0 LANGUAGES C)
+project(SM64Source35E VERSION 10.0 LANGUAGES C)
 
 include(GenerateG1A)
 find_package(Gint 2.9 REQUIRED)
@@ -32,7 +32,7 @@ add_executable(sm64src
     ${SM64_ROOT}/src/game/mario_actions_cutscene.c
     ${SM64_ROOT}/src/game/mario_actions_automatic.c
     ${SM64_ROOT}/src/game/mario_step.c
-    ${SM64_ROOT}/src/game/camera.c
+    port/camera_graph35.c
     ${SM64_ROOT}/src/engine/graph_node.c
 )
 
@@ -44,6 +44,7 @@ target_include_directories(sm64src PRIVATE
     ${SM64_ROOT}/include
     ${SM64_ROOT}/src
     ${SM64_ROOT}/src/engine
+    ${SM64_ROOT}/src/game
 )
 
 target_compile_definitions(sm64src PRIVATE
@@ -61,9 +62,10 @@ target_compile_options(sm64src PRIVATE
     -fomit-frame-pointer
     -Wno-unused-parameter
     -Wno-implicit-fallthrough
+    -Wno-discarded-qualifiers
 )
 
-target_link_options(sm64src PRIVATE -Wl,--gc-sections)
+target_link_options(sm64src PRIVATE -Wl,--gc-sections -Wl,-Map=SM64SRC.map)
 target_link_libraries(sm64src Gint::Gint m)
 
 generate_g1a(
