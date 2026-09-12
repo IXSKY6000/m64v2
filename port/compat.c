@@ -59,11 +59,11 @@ s32 gDialogResponse=0;
 
 const BehaviorScript bhvJumpingBox[]={0};
 
-static struct Surface sFlatFloor={
+static const struct Surface sFlatFloor={
  .type=SURFACE_DEFAULT,.force=0,.flags=0,.room=0,.lowerY=-100,.upperY=100,
  .normal={0.0f,1.0f,0.0f},.originOffset=0.0f,.object=NULL,
 };
-static struct Surface sDeepFloor={
+static const struct Surface sDeepFloor={
  .type=SURFACE_DEFAULT,.force=0,.flags=0,.room=0,.lowerY=-12000,.upperY=-9000,
  .normal={0.0f,1.0f,0.0f},.originOffset=-10000.0f,.object=NULL,
 };
@@ -71,7 +71,7 @@ static struct Surface sDeepFloor={
 s32 f32_find_wall_collision(f32*x,f32*y,f32*z,f32 oy,f32 r){(void)x;(void)y;(void)z;(void)oy;(void)r;return 0;}
 s32 find_wall_collisions(struct WallCollisionData*d){d->numWalls=0;return 0;}
 f32 find_ceil(f32 x,f32 y,f32 z,struct Surface **p){(void)x;(void)y;(void)z;*p=NULL;return 20000.0f;}
-f32 find_floor(f32 x,f32 y,f32 z,struct Surface **p){(void)y;if(x>=-4096&&x<=4096&&z>=-4096&&z<=4096){*p=&sFlatFloor;return 0.0f;}*p=&sDeepFloor;return -10000.0f;}
+f32 find_floor(f32 x,f32 y,f32 z,struct Surface **p){(void)y;if(x>=-4096&&x<=4096&&z>=-4096&&z<=4096){*p=(struct Surface *)&sFlatFloor;return 0.0f;}*p=(struct Surface *)&sDeepFloor;return -10000.0f;}
 f32 find_water_level(f32 x,f32 z){(void)x;(void)z;return -11000.0f;}
 f32 find_poison_gas_level(f32 x,f32 z){(void)x;(void)z;return -11000.0f;}
 

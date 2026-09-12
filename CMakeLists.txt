@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(SM64Source35E VERSION 10.0 LANGUAGES C)
+project(SM64Source35E VERSION 11.0 LANGUAGES C)
 
 include(GenerateG1A)
 find_package(Gint 2.9 REQUIRED)
@@ -65,7 +65,7 @@ target_compile_options(sm64src PRIVATE
     -Wno-discarded-qualifiers
 )
 
-target_link_options(sm64src PRIVATE -Wl,--gc-sections -Wl,-Map=SM64SRC.map)
+target_link_options(sm64src PRIVATE -Wl,--gc-sections -Wl,-Map=SM64SRC.map -Wl,--print-memory-usage)
 target_link_libraries(sm64src Gint::Gint m)
 
 generate_g1a(

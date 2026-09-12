@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdlib.h>
 #include "sm64.h"
 #include "types.h"
 #include "game/area.h"
@@ -30,8 +31,8 @@ s8 gNeverEnteredCastle = FALSE;
 f32 gPaintingMarioYEntry = 0.0f;
 s16 gSaveOptSelectIndex = MENU_OPT_NONE;
 
-static struct Object sSandboxObject;
-struct Object *gCurrentObject = &sSandboxObject;
+static struct Object *sSandboxObject = NULL;
+struct Object *gCurrentObject = NULL;
 
 const BehaviorScript bhvBowserKeyCourseExit[] = {0};
 const BehaviorScript bhvBowserKeyUnlockDoor[] = {0};
@@ -127,14 +128,28 @@ void set_menu_mode(s16 mode) { (void) mode; }
 void sound_banks_enable(u8 player, u16 bankMask) { (void) player; (void) bankMask; }
 
 static struct Object *sandbox_spawn(struct Object *parent, const BehaviorScript *behavior) {
-    memset(&sSandboxObject, 0, sizeof(sSandboxObject));
-    sSandboxObject.parentObj = parent;
-    sSandboxObject.behavior = behavior;
-    sSandboxObject.activeFlags = ACTIVE_FLAG_ACTIVE;
-    sSandboxObject.header.gfx.scale[0] = 1.0f;
-    sSandboxObject.header.gfx.scale[1] = 1.0f;
-    sSandboxObject.header.gfx.scale[2] = 1.0f;
-    return &sSandboxObject;
+    /*
+     * The empty test platform normally never spawns helper objects. Keeping a
+     * full struct Object permanently in .bss cost roughly 1 KiB of the very
+     * small Graph 35+E II RAM budget, so allocate this one-object sandbox pool
+     * lazily only if a cutscene/action actually requests a spawn.
+     */
+    if(sSandboxObject == NULL) {
+        sSandboxObject = calloc(1, sizeof(*sSandboxObject));
+        if(sSandboxObject == NULL) return NULL;
+    }
+    else {
+        memset(sSandboxObject, 0, sizeof(*sSandboxObject));
+    }
+
+    sSandboxObject->parentObj = parent;
+    sSandboxObject->behavior = behavior;
+    sSandboxObject->activeFlags = ACTIVE_FLAG_ACTIVE;
+    sSandboxObject->header.gfx.scale[0] = 1.0f;
+    sSandboxObject->header.gfx.scale[1] = 1.0f;
+    sSandboxObject->header.gfx.scale[2] = 1.0f;
+    gCurrentObject = sSandboxObject;
+    return sSandboxObject;
 }
 
 struct Object *spawn_object(struct Object *parent, s32 model, const BehaviorScript *behavior) {

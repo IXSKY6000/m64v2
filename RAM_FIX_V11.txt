@@ -1,0 +1,11 @@
+V11 - DERNIERS 544 OCTETS
+
+Le build V10 n'echouait plus que de 544 octets de RAM.
+
+Modifications V11 :
+- le gros struct Object de secours des spawns/cutscenes n'est plus reserve en .bss ;
+  il est alloue paresseusement uniquement si une action demande vraiment un spawn ;
+- les deux surfaces fixes de la plateforme sont placees en ROM (const) ;
+- le linker affiche maintenant l'utilisation ROM/RAM avec --print-memory-usage.
+
+Aucune formule de physique, action Mario, animation ou logique camera n'est modifiee.

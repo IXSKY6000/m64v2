@@ -19,10 +19,11 @@ jobs:
         run: |
           test -f CMakeLists.txt
           test -f main.c
-          test -f port/platform_graph35.c
-          test -f port/math_util_graph35.c
+          test -f port/renderer.c
+          test -f port/sandbox_stubs.c
+          test -f port/camera_graph35.c
           test -f generated/animation_data.c
-          test -f src/game/mario.c || test -f original/src/game/mario.c
+          test -f original/src/game/mario.c || test -f src/game/mario.c
 
       - name: Compiler
         run: |
@@ -33,13 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: SM64SRC-g1a
-          path: SM64SRC.g1a
+          path: |
+            SM64SRC.g1a
+            build-fx/SM64SRC.map
           if-no-files-found: error
-
-      - name: Donner la map memoire
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: SM64-link-map
-          path: build-fx/SM64SRC.map
-          if-no-files-found: ignore
