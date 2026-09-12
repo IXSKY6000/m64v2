@@ -1,0 +1,37 @@
+name: Compiler SM64 Source G1A
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main", "master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: manawyrm/fxsdk:0.0
+
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Verifier les fichiers
+        run: |
+          test -f CMakeLists.txt
+          test -f main.c
+          test -f port/platform_graph35.c
+          test -f port/math_util_graph35.c
+          test -f generated/animation_data.c
+          test -f src/game/mario.c || test -f original/src/game/mario.c
+
+      - name: Compiler
+        run: |
+          fxsdk build-fx -B
+          test -f SM64SRC.g1a
+
+      - name: Donner le G1A
+        uses: actions/upload-artifact@v4
+        with:
+          name: SM64SRC-g1a
+          path: SM64SRC.g1a
+          if-no-files-found: error
