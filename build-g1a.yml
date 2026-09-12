@@ -1,0 +1,21 @@
+name: Compiler SM64 Source G1A
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main", "master"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: manawyrm/fxsdk:0.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compiler
+        run: |
+          fxsdk build-fx -B
+          test -f SM64SRC.g1a
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SM64SRC-g1a
+          path: SM64SRC.g1a
+          if-no-files-found: error

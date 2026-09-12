@@ -1,0 +1,41 @@
+V6 SOURCE STATUS
+
+DIRECTLY COMPILED, UNMODIFIED SM64 SOURCE:
+- src/game/mario.c
+- src/game/mario_actions_stationary.c
+- src/game/mario_actions_moving.c
+- src/game/mario_actions_airborne.c
+- src/game/mario_actions_object.c
+- src/game/mario_actions_submerged.c
+- src/game/mario_actions_cutscene.c
+- src/game/mario_actions_automatic.c
+- src/game/mario_step.c
+- src/game/camera.c
+- src/engine/math_util.c
+- src/engine/graph_node.c
+
+camera.c also directly includes the original unmodified files:
+- src/game/behaviors/intro_peach.inc.c
+- src/game/behaviors/intro_lakitu.inc.c
+- src/game/behaviors/end_birds_1.inc.c
+- src/game/behaviors/end_birds_2.inc.c
+- src/game/behaviors/intro_scene.inc.c
+
+GRAPH 35+E II / SANDBOX ADAPTER:
+- main.c: maps calculator keys to the N64 Controller structure
+- port/compat.c: flat collision world, global state, animation DMA adapter
+- port/sandbox_stubs.c: services absent from the empty sandbox (objects, audio, save/menu)
+- port/renderer.c: 128x64 wireframe renderer
+- generated/animation_data.c: static representation of the 209 source animations
+- generated/mario_mesh.h: low-poly source model converted to wire edges
+
+TESTS COMPLETED BEFORE PACKAGING:
+- host compilation of all listed sources: PASS
+- host full link with --gc-sections: PASS
+- 100-frame runtime smoke test (walk + jump + punch): PASS
+- original-source byte comparison against the user-supplied sm64-master.zip: PASS
+
+IMPORTANT:
+This is a source port sandbox, not the whole original level/object/audio system.
+The Mario action code and camera source are original; the environment around them
+is intentionally minimal because the requested test world is one huge flat platform.

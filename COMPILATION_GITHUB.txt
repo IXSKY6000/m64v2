@@ -1,0 +1,16 @@
+COMPILATION GITHUB - SM64 SOURCE 35E V6
+
+Methode fiable (comme tes autres projets) :
+
+1. Envoie les fichiers du projet dans ton depot GitHub.
+2. Clique Add file > Create new file.
+3. Nom exact :
+   .github/workflows/build-g1a.yml
+4. Ouvre le fichier visible build-g1a.yml de ce projet.
+5. Copie tout son contenu dans le fichier GitHub.
+6. Commit changes.
+7. Actions > Compiler SM64 Source G1A > Run workflow.
+8. Telecharge l'artifact SM64SRC-g1a.
+9. Recupere SM64SRC.g1a.
+
+Si la compilation devient rouge, envoie-moi la capture ou le texte de l'etape Compiler.
